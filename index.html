@@ -12,7 +12,6 @@
         <div id="input-view" class="view-section">
             <h1>输入你的专属字母</h1>
             <div class="letter-inputs">
-                <!-- 限制每个框只能输入1个字符 -->
                 <input type="text" maxlength="1" class="letter-box">
                 <input type="text" maxlength="1" class="letter-box">
                 <input type="text" maxlength="1" class="letter-box">
@@ -22,9 +21,19 @@
             <button id="submit-btn">揭晓结果</button>
         </div>
 
-        <!-- 视图 2：结果区 (初始状态隐藏) -->
+        <!-- 视图 2：结果区 (翻转卡牌版) -->
         <div id="result-view" class="view-section hidden">
-            <img id="result-img" src="placeholder.png" alt="人格插画">
+            <p style="text-align: center; margin-bottom: 15px; font-weight: bold;">点击卡牌，揭晓你的灵魂属性！</p>
+            <div class="flip-card" id="mbti-card">
+                <div class="flip-card-inner" id="card-inner">
+                    <div class="flip-card-front">
+                        <img src="card-back.jpeg" alt="卡牌背面">
+                    </div>
+                    <div class="flip-card-back">
+                        <img id="result-img" src="placeholder.png" alt="人格插画">
+                    </div>
+                </div>
+            </div>
             <h2 id="result-title">人格名称</h2>
             <p id="result-desc">这里是人格解析文案...</p>
             <button id="reset-btn">重新测算</button>
