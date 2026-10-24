@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第30届砂大华协迎新会</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- 视图 1：输入区 -->
+        <div id="input-view" class="view-section">
+            <h1>输入你的专属字母</h1>
+            <div class="letter-inputs">
+                <!-- 限制每个框只能输入1个字符 -->
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
+            <button id="submit-btn">揭晓结果</button>
+        </div>
+
+        <!-- 视图 2：结果区 (初始状态隐藏) -->
+        <div id="result-view" class="view-section hidden">
+            <img id="result-img" src="placeholder.png" alt="人格插画">
+            <h2 id="result-title">人格名称</h2>
+            <p id="result-desc">这里是人格解析文案...</p>
+            <button id="reset-btn">重新测算</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

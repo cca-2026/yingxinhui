@@ -1,0 +1,138 @@
+/* 基础重置与居中布局 */
+/* 基础重置与居中布局 */
+body {
+    margin: 0;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4a3022;
+    font-family: "Noto Serif SC", "Songti SC", serif;
+    position: relative; /* 为独立的背景层做准备 */
+    overflow: hidden; /* 防止模糊边缘溢出产生滚动条 */
+    background-color: #f7f4ec; /* 备用底色 */
+}
+
+/* 独立的全屏模糊 Logo 背景层 */
+body::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px; /* 四周向外延伸，防止模糊后边缘出现生硬的白边 */
+    background-image: url('logo.jpeg'); /* 确保图片文件名与此处完全一致 */
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px); /* 模糊程度，数值越大越模糊，可自行微调 */
+    z-index: -1; /* 将背景层强行置于所有内容的底层 */
+    opacity: 0.85; /* 略微降低透明度，让整体视觉更柔和 */
+}
+
+/* 主卡片容器 */
+.main-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(139, 42, 42, 0.15); /* 带有暗红色调的阴影 */
+    border: 1px solid rgba(198, 156, 109, 0.3); /* 金色极细边框 */
+}
+
+/* 5个独立输入框的样式 */
+.letter-inputs {
+    display: flex;
+    gap: 12px;
+    margin: 24px 0;
+    justify-content: center;
+}
+
+.letter-box {
+    width: 48px;
+    height: 56px;
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 2px solid #d4c4b7; /* 浅棕灰色边框 */
+    border-radius: 12px;
+    background: #ffffff;
+    color: #7c2828; /* 输入的文字使用海报的暗红色 */
+    outline: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+/* 聚焦输入框时的效果 */
+.letter-box:focus {
+    border-color: #c69c6d; /* 海报的金色 */
+    box-shadow: 0 0 15px rgba(198, 156, 109, 0.4);
+    transform: translateY(-3px);
+}
+
+/* 按钮整体动效与样式 */
+button {
+    background: linear-gradient(to right, #7c2828, #9b3d3d); /* 海报的主色调暗红渐变 */
+    color: #f7f4ec;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 20px;
+    font-family: inherit;
+}
+
+button:hover {
+    background: linear-gradient(to right, #8c2f2f, #aa4646);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(124, 40, 40, 0.4);
+}
+
+/* 视图隐藏控制类 */
+.hidden {
+    display: none;
+}
+
+/* 平滑切换动画 */
+.view-section {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+#result-img {
+    width: 300px; /* 增加这个数值（比如 300px、350px），直到图片大小合适为止 */
+    max-width: 100%; /* 确保图片在手机小屏幕上不会超出边框 */
+    height: auto; /* 自动保持图片的原始比例，防止画面被拉伸变形 */
+    border-radius: 12px; /* 增加一点圆角让边缘更柔和（可选） */
+    margin-bottom: 20px; /* 让图片和下方的标题文字保持舒适的间距 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 加一点浅浅的阴影 */
+}
+/* 📱 手机与小屏幕平板适配 (响应式设计) */
+@media screen and (max-width: 768px) {
+    .main-container {
+        padding: 30px 20px; /* 缩小卡片的内边距 */
+        width: 85%; /* 让卡片宽度自适应屏幕，两边留出呼吸感 */
+        box-sizing: border-box; /* 确保 padding 不会撑破容器宽度 */
+    }
+
+    .letter-inputs {
+        gap: 8px; /* 缩小输入框之间的间距 */
+    }
+
+    .letter-box {
+        width: 38px; /* 缩小输入框宽度 */
+        height: 48px; /* 缩小高度 */
+        font-size: 20px; /* 缩小输入的字母大小 */
+    }
+
+    h1 {
+        font-size: 22px; /* 让主标题也稍微变小，显得更精致 */
+    }
+}
